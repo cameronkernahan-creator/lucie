@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -61,6 +60,7 @@ animation:drift 25s ease-in-out infinite;
 .sd { background:var(–dark); max-width:100%; padding:5rem 2rem; }
 .sd .inner { max-width:960px; margin:0 auto; }
 .lab { display:inline-block; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin-bottom:.75rem; color:var(–blue); }
+.sd .lab { color:var(–white); }
 .t { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; line-height:1.2; margin-bottom:1rem; }
 .t em { font-style:italic; font-weight:400; }
 .sd .t { color:var(–white); }
@@ -141,20 +141,22 @@ animation:drift 25s ease-in-out infinite;
 
 <!-- CONTEXT -->
 
-<section class="s">
+<section class="sd">
+  <div class="inner">
   <span class="lab">Context</span>
   <h2 class="t serif">Lucie is invisible. The product is <em>ready.</em></h2>
   <p class="p">Zero brand awareness. No founder storytelling. No consistent content. No system to measure what drives downloads. Both founders have massive untapped personal brands. The content engine doesn't exist yet. We're building it.</p>
 
   <div class="two">
-    <div class="card">
+    <div class="dcard">
       <h3>The product</h3>
       <p>AI alignment app connecting sleep, stress, calendar, and energy. Morning journaling, breathwork, mood tracking, meeting alignment scoring. Alpha launching with 50 founding users. Subscription at $19.99/month. Profitable at 7,000 users.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>The opportunity</h3>
       <p>First mover in AI alignment. Google and Microsoft are building similar but not human-first. Andy raising $5M at $25M valuation in April. Content is the engine that turns product-market fit into real traction. Without it, Lucie stays a secret.</p>
     </div>
+  </div>
   </div>
 </section>
 
@@ -195,58 +197,61 @@ animation:drift 25s ease-in-out infinite;
 
 <!-- CONTENT PILLARS -->
 
-<section class="s">
+<section class="sd">
+  <div class="inner">
   <span class="lab">Content</span>
   <h2 class="t serif">What we <em>create.</em></h2>
 
   <div class="three" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-    <div class="card">
+    <div class="dcard">
       <h3>Samy's story</h3>
       <p>Harvard to alignment. The spiritual journey, the exit, the why behind Lucie. LinkedIn authority content. Weekly shoots with Oli. Three posts per week.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>Andy's brand</h3>
       <p>Full Instagram management. Strategy, shooting, editing, captions, posting. Building the quiet authority. Two shoot days per month with Cameron. Warm up audience before April fundraise.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>Lucie's page</h3>
       <p>Brand content mixing deeply human moments with premium tech UI visuals. App walkthroughs, feature highlights, user testimonials as the community grows.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>Alignment lessons</h3>
       <p>Short-form education on sleep, stress, energy, AI. Samy teaching. Position Lucie as the authority in conscious tech. Value-first content that earns trust.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>User stories</h3>
       <p>Alpha and beta users sharing real experiences. Before and after. Authentic, unscripted. Social proof that compounds as the user base grows through community partnerships.</p>
     </div>
-    <div class="card">
+    <div class="dcard">
       <h3>The universe</h3>
       <p>Lifestyle content that embodies the brand. Cape Town mornings, breathwork sessions, team culture, the merch. The world around Lucie that makes people want in.</p>
     </div>
+  </div>
   </div>
 </section>
 
 <!-- PACKAGES -->
 
-<section class="s" style="background:var(--bg);padding-top:0">
+<section class="sd">
+  <div class="inner">
   <span class="lab">Investment</span>
   <h2 class="t serif">Choose your <em>level.</em></h2>
   <p class="p">Three packages. Start with a 3-month commitment. Scale based on results.</p>
 
   <div class="pkg">
-    <div class="pk">
-      <h3 class="serif">Foundation</h3>
+    <div class="pk" style="background:var(--dark-card);border-color:var(--border-dark);">
+      <h3 class="serif" style="color:var(--white)">Foundation</h3>
       <div class="pr"><span>$5,000</span> /month</div>
-      <p class="pd">One founder focus. Build the visual identity and start the rhythm.</p>
+      <p class="pd" style="color:var(--light-muted);border-color:var(--border-dark)">One founder focus. Build the visual identity and start the rhythm.</p>
       <ul class="pl">
-        <li>1 shoot day per month</li>
-        <li>8 short-form assets</li>
-        <li>1 founder (alternating)</li>
-        <li>Content strategy</li>
-        <li>Platform formatting</li>
-        <li>2 revision rounds</li>
-        <li>Monthly review</li>
+        <li style="color:var(--light-muted)">1 shoot day per month</li>
+        <li style="color:var(--light-muted)">8 short-form assets</li>
+        <li style="color:var(--light-muted)">1 founder (alternating)</li>
+        <li style="color:var(--light-muted)">Content strategy</li>
+        <li style="color:var(--light-muted)">Platform formatting</li>
+        <li style="color:var(--light-muted)">2 revision rounds</li>
+        <li style="color:var(--light-muted)">Monthly review</li>
       </ul>
     </div>
     <div class="pk feat">
@@ -266,50 +271,53 @@ animation:drift 25s ease-in-out infinite;
         <li>Monthly performance review</li>
       </ul>
     </div>
-    <div class="pk">
-      <h3 class="serif">Scale</h3>
+    <div class="pk" style="background:var(--dark-card);border-color:var(--border-dark);">
+      <h3 class="serif" style="color:var(--white)">Scale</h3>
       <div class="pr"><span>$10,000</span> /month</div>
-      <p class="pd">Full engine. All accounts managed. Strategy, production, publishing, performance.</p>
+      <p class="pd" style="color:var(--light-muted);border-color:var(--border-dark)">Full engine. All accounts managed. Strategy, production, publishing, performance.</p>
       <ul class="pl">
-        <li>4+ shoot days per month</li>
-        <li>16+ short-form assets</li>
-        <li>Both founders + team content</li>
-        <li>All social accounts managed</li>
-        <li>Full 4P solution</li>
-        <li>Paid ad creative (when ready)</li>
-        <li>Performance reporting</li>
-        <li>Quarterly KPI reviews</li>
+        <li style="color:var(--light-muted)">4+ shoot days per month</li>
+        <li style="color:var(--light-muted)">16+ short-form assets</li>
+        <li style="color:var(--light-muted)">Both founders + team content</li>
+        <li style="color:var(--light-muted)">All social accounts managed</li>
+        <li style="color:var(--light-muted)">Full 4P solution</li>
+        <li style="color:var(--light-muted)">Paid ad creative (when ready)</li>
+        <li style="color:var(--light-muted)">Performance reporting</li>
+        <li style="color:var(--light-muted)">Quarterly KPI reviews</li>
       </ul>
     </div>
+  </div>
   </div>
 </section>
 
 <!-- MONTHLY FLOW -->
 
-<section class="s" style="padding-top:0">
+<section class="sd">
+  <div class="inner">
   <span class="lab">Rhythm</span>
   <h2 class="t serif">Every month, the same <em>flow.</em></h2>
   <div class="tl">
     <div class="tl-item">
       <div class="tl-num serif">1</div>
-      <h4>Align</h4>
-      <p>Strategy call. Plan this month's concepts. Review last month's data.</p>
+      <h4 style="color:var(--white)">Align</h4>
+      <p style="color:var(--light-muted)">Strategy call. Plan this month's concepts. Review last month's data.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">2</div>
-      <h4>Shoot</h4>
-      <p>Dedicated days. Oli with Samy. Cameron with Andy. Content captured.</p>
+      <h4 style="color:var(--white)">Shoot</h4>
+      <p style="color:var(--light-muted)">Dedicated days. Oli with Samy. Cameron with Andy. Content captured.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">3</div>
-      <h4>Deliver</h4>
-      <p>Edited, graded, formatted. Same week turnaround. Ready to post.</p>
+      <h4 style="color:var(--white)">Deliver</h4>
+      <p style="color:var(--light-muted)">Edited, graded, formatted. Same week turnaround. Ready to post.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">4</div>
-      <h4>Review</h4>
-      <p>What worked, what didn't. Next round gets sharper. Compounds every cycle.</p>
+      <h4 style="color:var(--white)">Review</h4>
+      <p style="color:var(--light-muted)">What worked, what didn't. Next round gets sharper. Compounds every cycle.</p>
     </div>
+  </div>
   </div>
 </section>
 
