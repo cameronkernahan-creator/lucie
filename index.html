@@ -24,8 +24,8 @@
   --white: #FFFFFF;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; scroll-behavior:smooth; background:var(--dark); }
-body { font-family:'Manrope',sans-serif; background:var(--dark); color:var(--text); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+html { font-size:16px; scroll-behavior:smooth; background:#0C1117; }
+body { font-family:'Manrope',sans-serif; background:#0C1117; color:#FFFFFF; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 .serif { font-family:'Newsreader',serif; }
 
 body::after {
@@ -58,70 +58,66 @@ animation:drift 25s ease-in-out infinite;
 
 /* ═══ SECTIONS ═══ */
 .s { padding:5rem 2rem; max-width:960px; margin:0 auto; }
-.sd { background:var(–dark); max-width:100%; padding:5rem 2rem; }
+.sd { background:#0C1117; max-width:100%; padding:5rem 2rem; }
 .sd .inner { max-width:960px; margin:0 auto; }
-.lab { display:inline-block; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin-bottom:.75rem; color:var(–blue); }
-.sd .lab { color:var(–white); }
-.t { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; line-height:1.2; margin-bottom:1rem; }
-.t em { font-style:italic; font-weight:400; }
-.sd .t { color:var(–white); }
-.sd .t em { color:var(–blue); }
-.p { font-size:.92rem; line-height:1.75; color:var(–muted); max-width:560px; }
-.sd .p { color:var(–light-muted); }
+.lab { display:inline-block; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin-bottom:.75rem; color:#FFFFFF; }
+.t { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; line-height:1.2; margin-bottom:1rem; color:#FFFFFF; }
+.t em { font-style:italic; font-weight:400; color:#4AABF0; }
+.p { font-size:.92rem; line-height:1.75; color:#9BA3AF; max-width:560px; }
 
 /* ═══ TWO COL ═══ */
 .two { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:2.5rem; }
 @media(max-width:700px) { .two{grid-template-columns:1fr} }
-.card { padding:1.75rem; border-radius:12px; border:1px solid var(–border); background:var(–white); }
-.card h3 { font-size:.95rem; font-weight:600; margin-bottom:.5rem; }
-.card p { font-size:.8rem; color:var(–muted); line-height:1.65; }
+.card { padding:1.75rem; border-radius:12px; border:1px solid rgba(255,255,255,0.06); background:#14181F; }
+.card h3 { font-size:.95rem; font-weight:600; margin-bottom:.5rem; color:#FFFFFF; }
+.card p { font-size:.8rem; color:#9BA3AF; line-height:1.65; }
 
 /* ═══ DARK CARDS ═══ */
-.dcard { background:var(–dark-card); border:1px solid var(–border-dark); border-radius:12px; padding:1.75rem; transition:border-color .3s; }
+.dcard { background:#14181F; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:1.75rem; transition:border-color .3s; }
 .dcard:hover { border-color:rgba(74,171,240,.15); }
-.dcard h3 { font-size:.95rem; font-weight:600; color:var(–white); margin-bottom:.4rem; }
-.dcard p { font-size:.78rem; color:var(–light-muted); line-height:1.6; }
+.dcard h3 { font-size:.95rem; font-weight:600; color:#FFFFFF; margin-bottom:.4rem; }
+.dcard p { font-size:.78rem; color:#9BA3AF; line-height:1.6; }
 .dtag { display:inline-block; padding:.15rem .5rem; border-radius:100px; font-size:.55rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.6rem; }
-.dtag-b { background:var(–blue-dim); color:var(–blue); }
-.dtag-g { background:var(–green-dim); color:var(–green); }
+.dtag-b { background:rgba(74,171,240,0.08); color:#4AABF0; }
+.dtag-g { background:rgba(52,199,123,0.08); color:#34C77B; }
 
 .three { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:2.5rem; }
 @media(max-width:700px) { .three{grid-template-columns:1fr} }
 
 /* ═══ SCOPE NOTE ═══ */
-.note { margin-top:2rem; padding:1rem 1.25rem; background:var(–blue-dim); border-left:3px solid var(–blue); border-radius:0 8px 8px 0; font-size:.8rem; line-height:1.6; }
+.note { margin-top:2rem; padding:1rem 1.25rem; background:rgba(74,171,240,0.05); border-left:3px solid #4AABF0; border-radius:0 8px 8px 0; font-size:.8rem; line-height:1.6; color:#9BA3AF; }
 
 /* ═══ PACKAGES ═══ */
 .pkg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:2.5rem; }
 @media(max-width:900px) { .pkg{grid-template-columns:1fr} }
-.pk { background:var(–white); border-radius:14px; padding:2rem 1.75rem; border:1px solid var(–border); transition:transform .3s; }
+.pk { background:#14181F; border-radius:14px; padding:2rem 1.75rem; border:1px solid rgba(255,255,255,0.06); transition:transform .3s; }
 .pk:hover { transform:translateY(-3px); }
-.pk.feat { background:var(–dark); border:2px solid var(–blue); color:var(–white); }
-.pk.feat h3{color:var(–white)} .pk.feat .pr span{color:var(–blue)} .pk.feat .pd{color:var(–light-muted);border-color:var(–border-dark)} .pk.feat .pl li{color:var(–light-muted)} .pk.feat .pl li::before{color:var(–blue)}
-.pbadge { display:inline-block; padding:.2rem .6rem; background:var(–blue); color:var(–white); font-size:.5rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:100px; margin-bottom:.75rem; }
-.pk h3 { font-family:‘Newsreader’,serif; font-size:1.3rem; font-weight:400; margin-bottom:.3rem; }
-.pr { font-size:.85rem; margin-bottom:1rem; }
-.pr span { font-family:‘Newsreader’,serif; font-size:1.6rem; font-weight:500; color:var(–blue); }
-.pd { font-size:.78rem; color:var(–muted); line-height:1.6; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(–border); }
+.pk h3 { font-family:‘Newsreader’,serif; font-size:1.3rem; font-weight:400; margin-bottom:.3rem; color:#FFFFFF; }
+.pk.feat { background:#0C1117; border:2px solid #4AABF0; color:#FFFFFF; }
+.pk.feat h3{color:#FFFFFF} .pk.feat .pr span{color:#4AABF0} .pk.feat .pd{color:#9BA3AF;border-color:rgba(255,255,255,0.06)} .pk.feat .pl li{color:#9BA3AF} .pk.feat .pl li::before{color:#4AABF0}
+.pbadge { display:inline-block; padding:.2rem .6rem; background:#4AABF0; color:#FFFFFF; font-size:.5rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:100px; margin-bottom:.75rem; }
+.pr { font-size:.85rem; margin-bottom:1rem; color:#9BA3AF; }
+.pr span { font-family:‘Newsreader’,serif; font-size:1.6rem; font-weight:500; color:#4AABF0; }
+.pd { font-size:.78rem; color:#9BA3AF; line-height:1.6; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); }
 .pl { list-style:none; }
-.pl li { font-size:.78rem; color:var(–muted); padding:.3rem 0 .3rem 1.3rem; position:relative; line-height:1.45; }
-.pl li::before { content:‘✓’; position:absolute; left:0; color:var(–green); font-weight:700; }
+.pl li { font-size:.78rem; color:#9BA3AF; padding:.3rem 0 .3rem 1.3rem; position:relative; line-height:1.45; }
+.pl li::before { content:‘✓’; position:absolute; left:0; color:#34C77B; font-weight:700; }
 
 /* ═══ TIMELINE ═══ */
 .tl { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.5rem; text-align:center; }
 @media(max-width:600px) { .tl{grid-template-columns:1fr 1fr} }
 .tl-item { padding:1.5rem 1rem; }
-.tl-num { display:inline-flex; width:36px; height:36px; border-radius:50%; border:1px solid var(–blue); color:var(–blue); font-family:‘Newsreader’,serif; font-size:.9rem; align-items:center; justify-content:center; margin-bottom:.6rem; }
-.tl-item h4 { font-size:.8rem; margin-bottom:.3rem; }
-.tl-item p { font-size:.7rem; color:var(–muted); line-height:1.5; }
+.tl-num { display:inline-flex; width:36px; height:36px; border-radius:50%; border:1px solid #4AABF0; color:#4AABF0; font-family:‘Newsreader’,serif; font-size:.9rem; align-items:center; justify-content:center; margin-bottom:.6rem; }
+.tl-item h4 { font-size:.8rem; margin-bottom:.3rem; color:#FFFFFF; }
+.tl-item p { font-size:.7rem; color:#9BA3AF; line-height:1.5; }
 
 /* ═══ CTA ═══ */
-.cta { background:var(–dark); text-align:center; padding:5rem 2rem; position:relative; }
-.cta h2 { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; color:var(–white); margin-bottom:.75rem; position:relative; z-index:1; }
-.cta h2 em { color:var(–blue); font-style:italic; font-weight:400; }
-.cta p { color:var(–light-muted); font-size:.9rem; max-width:420px; margin:0 auto; line-height:1.7; position:relative; z-index:1; }
-.ft { background:var(–dark); border-top:1px solid var(–border-dark); text-align:center; padding:1.25rem; }
-.ft p { color:var(–light-muted); font-size:.6rem; letter-spacing:.1em; }
+.cta { background:#0C1117; text-align:center; padding:5rem 2rem; position:relative; }
+.cta h2 { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; color:#FFFFFF; margin-bottom:.75rem; position:relative; z-index:1; }
+.cta h2 em { color:#4AABF0; font-style:italic; font-weight:400; }
+.cta p { color:#9BA3AF; font-size:.9rem; max-width:420px; margin:0 auto; line-height:1.7; position:relative; z-index:1; }
+.ft { background:#0C1117; border-top:1px solid rgba(255,255,255,0.06); text-align:center; padding:1.25rem; }
+.ft p { color:#9BA3AF; font-size:.6rem; letter-spacing:.1em; }
 </style>
 
 </head>
@@ -188,8 +184,8 @@ animation:drift 25s ease-in-out infinite;
   </div>
 </div>
 
-<div class="note" style="margin-top:2rem; background:rgba(74,171,240,0.05); border-left-color:var(--blue);">
-  <strong style="color:var(--white)">The agreement:</strong> <span style="color:var(--light-muted)">Voyager is measured on social media growth and engagement, not on downloads or conversions. Content compounds over time. The first three months are about establishing the brand, not driving revenue.</span>
+<div class="note" style="margin-top:2rem; background:rgba(74,171,240,0.05); border-left-color:#4AABF0;">
+  <strong style="color:#FFFFFF">The agreement:</strong> <span style="color:#9BA3AF">Voyager is measured on social media growth and engagement, not on downloads or conversions. Content compounds over time. The first three months are about establishing the brand, not driving revenue.</span>
 </div>
 ```
 
@@ -241,18 +237,18 @@ animation:drift 25s ease-in-out infinite;
   <p class="p">Three packages. Start with a 3-month commitment. Scale based on results.</p>
 
   <div class="pkg">
-    <div class="pk" style="background:var(--dark-card);border-color:var(--border-dark);">
-      <h3 class="serif" style="color:var(--white)">Foundation</h3>
+    <div class="pk">
+      <h3 class="serif">Foundation</h3>
       <div class="pr"><span>$5,000</span> /month</div>
-      <p class="pd" style="color:var(--light-muted);border-color:var(--border-dark)">One founder focus. Build the visual identity and start the rhythm.</p>
+      <p class="pd">One founder focus. Build the visual identity and start the rhythm.</p>
       <ul class="pl">
-        <li style="color:var(--light-muted)">1 shoot day per month</li>
-        <li style="color:var(--light-muted)">8 short-form assets</li>
-        <li style="color:var(--light-muted)">1 founder (alternating)</li>
-        <li style="color:var(--light-muted)">Content strategy</li>
-        <li style="color:var(--light-muted)">Platform formatting</li>
-        <li style="color:var(--light-muted)">2 revision rounds</li>
-        <li style="color:var(--light-muted)">Monthly review</li>
+        <li>1 shoot day per month</li>
+        <li>8 short-form assets</li>
+        <li>1 founder (alternating)</li>
+        <li>Content strategy</li>
+        <li>Platform formatting</li>
+        <li>2 revision rounds</li>
+        <li>Monthly review</li>
       </ul>
     </div>
     <div class="pk feat">
@@ -272,19 +268,19 @@ animation:drift 25s ease-in-out infinite;
         <li>Monthly performance review</li>
       </ul>
     </div>
-    <div class="pk" style="background:var(--dark-card);border-color:var(--border-dark);">
-      <h3 class="serif" style="color:var(--white)">Scale</h3>
+    <div class="pk">
+      <h3 class="serif">Scale</h3>
       <div class="pr"><span>$10,000</span> /month</div>
-      <p class="pd" style="color:var(--light-muted);border-color:var(--border-dark)">Full engine. All accounts managed. Strategy, production, publishing, performance.</p>
+      <p class="pd">Full engine. All accounts managed. Strategy, production, publishing, performance.</p>
       <ul class="pl">
-        <li style="color:var(--light-muted)">4+ shoot days per month</li>
-        <li style="color:var(--light-muted)">16+ short-form assets</li>
-        <li style="color:var(--light-muted)">Both founders + team content</li>
-        <li style="color:var(--light-muted)">All social accounts managed</li>
-        <li style="color:var(--light-muted)">Full 4P solution</li>
-        <li style="color:var(--light-muted)">Paid ad creative (when ready)</li>
-        <li style="color:var(--light-muted)">Performance reporting</li>
-        <li style="color:var(--light-muted)">Quarterly KPI reviews</li>
+        <li>4+ shoot days per month</li>
+        <li>16+ short-form assets</li>
+        <li>Both founders + team content</li>
+        <li>All social accounts managed</li>
+        <li>Full 4P solution</li>
+        <li>Paid ad creative (when ready)</li>
+        <li>Performance reporting</li>
+        <li>Quarterly KPI reviews</li>
       </ul>
     </div>
   </div>
@@ -300,23 +296,23 @@ animation:drift 25s ease-in-out infinite;
   <div class="tl">
     <div class="tl-item">
       <div class="tl-num serif">1</div>
-      <h4 style="color:var(--white)">Align</h4>
-      <p style="color:var(--light-muted)">Strategy call. Plan this month's concepts. Review last month's data.</p>
+      <h4>Align</h4>
+      <p>Strategy call. Plan this month's concepts. Review last month's data.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">2</div>
-      <h4 style="color:var(--white)">Shoot</h4>
-      <p style="color:var(--light-muted)">Dedicated days. Oli with Samy. Cameron with Andy. Content captured.</p>
+      <h4>Shoot</h4>
+      <p>Dedicated days. Oli with Samy. Cameron with Andy. Content captured.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">3</div>
-      <h4 style="color:var(--white)">Deliver</h4>
-      <p style="color:var(--light-muted)">Edited, graded, formatted. Same week turnaround. Ready to post.</p>
+      <h4>Deliver</h4>
+      <p>Edited, graded, formatted. Same week turnaround. Ready to post.</p>
     </div>
     <div class="tl-item">
       <div class="tl-num serif">4</div>
-      <h4 style="color:var(--white)">Review</h4>
-      <p style="color:var(--light-muted)">What worked, what didn't. Next round gets sharper. Compounds every cycle.</p>
+      <h4>Review</h4>
+      <p>What worked, what didn't. Next round gets sharper. Compounds every cycle.</p>
     </div>
   </div>
   </div>
