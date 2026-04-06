@@ -1,331 +1,895 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucie × Voyager Visual</title>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #FAFBFC;
-  --dark: #0C1117;
-  --dark-card: #14181F;
-  --text: #1A1F27;
-  --muted: #6B7584;
-  --light-muted: #9BA3AF;
-  --blue: #4AABF0;
-  --blue-dim: rgba(74,171,240,0.08);
-  --green: #34C77B;
-  --green-dim: rgba(52,199,123,0.08);
-  --gold: #C9A96E;
-  --border: rgba(0,0,0,0.06);
-  --border-dark: rgba(255,255,255,0.06);
+  --bg: #F2F3F7;
+  --bg2: #EDEEF3;
   --white: #FFFFFF;
+  --text: #1A1C20;
+  --muted: #8A909C;
+  --light: #B8BDCA;
+  --blue: #4A9EF0;
+  --blue-dim: rgba(74,158,240,0.10);
+  --blue-mid: rgba(74,158,240,0.18);
+  --green: #34C77B;
+  --green-dim: rgba(52,199,123,0.12);
+  --amber: #F5A623;
+  --amber-dim: rgba(245,166,35,0.12);
+  --red-dim: rgba(240,80,80,0.10);
+  --red: #F05050;
+  --border: rgba(0,0,0,0.055);
+  --shadow: 0 2px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; scroll-behavior:smooth; background:#0C1117; }
-body { font-family:'Manrope',sans-serif; background:#0C1117; color:#FFFFFF; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-.serif { font-family:'Newsreader',serif; }
 
-body::after {
-content:’’; position:fixed; top:0; left:0; width:100%; height:100%;
-background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.02’/%3E%3C/svg%3E”);
-pointer-events:none; z-index:9999;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.serif { font-family: 'DM Serif Display', serif; }
+
+/* ─── STATUS BAR HEADER ─── */
+.app-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(242,243,247,0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.5rem;
+}
+.app-header-inner {
+  max-width: 680px; margin: 0 auto;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.header-label {
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--text);
+}
+.score-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--green); color: #fff;
+  font-size: 0.85rem; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(52,199,123,0.35);
+}
+.dots {
+  display: flex; gap: 3px;
+}
+.dots span {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--muted);
 }
 
-/* ═══ HERO ═══ */
+/* ─── HERO ─── */
 .hero {
-min-height:80vh; background:#0C1117; background-color:#0C1117;
-display:flex; flex-direction:column; justify-content:center; align-items:center;
-text-align:center; padding:4rem 2rem; position:relative; overflow:hidden;
+  max-width: 680px; margin: 0 auto;
+  padding: 3rem 1.5rem 1.5rem;
 }
-.hero::before {
-content:’’; position:absolute; top:-40%; left:-20%; width:140%; height:140%;
-background:radial-gradient(ellipse at 40% 60%,rgba(74,171,240,0.06) 0%,transparent 50%),
-radial-gradient(ellipse at 65% 30%,rgba(52,199,123,0.03) 0%,transparent 40%);
-animation:drift 25s ease-in-out infinite;
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--white); border-radius: 100px;
+  padding: 0.35rem 0.9rem; font-size: 0.72rem;
+  font-weight: 600; color: var(--muted);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  box-shadow: var(--shadow); margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
 }
-@keyframes drift { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-2%,1%)} }
+.hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
 
-.hero-logos { display:flex; align-items:center; gap:1.2rem; margin-bottom:2.5rem; position:relative; z-index:1; opacity:1; }
-.logo-t { font-weight:600; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; }
-.hero h1 { font-family:‘Newsreader’,serif; font-size:clamp(2.2rem,6vw,4.5rem); font-weight:300; color:#FFFFFF; line-height:1.1; margin-bottom:1.2rem; position:relative; z-index:1; opacity:1; }
-.hero h1 em { font-style:italic; color:#4AABF0; font-weight:400; }
-.hero-sub { font-size:clamp(.9rem,1.6vw,1.05rem); color:#9BA3AF; max-width:480px; line-height:1.7; font-weight:300; position:relative; z-index:1; opacity:1; }
-.hero-date { display:inline-block; margin-top:2rem; padding:.4rem 1rem; border:1px solid rgba(74,171,240,.2); border-radius:100px; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#4AABF0; font-weight:500; position:relative; z-index:1; opacity:1; }
-@keyframes up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300; line-height: 1.15;
+  color: var(--text); margin-bottom: 0.5rem;
+}
+.hero h1 strong { font-weight: 600; }
+.hero h1 em { font-style: italic; color: var(--blue); font-family: 'DM Serif Display', serif; }
 
-/* ═══ SECTIONS ═══ */
-.s { padding:5rem 2rem; max-width:960px; margin:0 auto; }
-.sd { background:#0C1117; max-width:100%; padding:5rem 2rem; }
-.sd .inner { max-width:960px; margin:0 auto; }
-.lab { display:inline-block; font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; font-weight:600; margin-bottom:.75rem; color:#FFFFFF; }
-.t { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; line-height:1.2; margin-bottom:1rem; color:#FFFFFF; }
-.t em { font-style:italic; font-weight:400; color:#4AABF0; }
-.p { font-size:.92rem; line-height:1.75; color:#9BA3AF; max-width:560px; }
+.hero-sub {
+  font-size: 1rem; color: var(--muted);
+  line-height: 1.75; max-width: 480px;
+  margin-top: 1rem;
+}
 
-/* ═══ TWO COL ═══ */
-.two { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:2.5rem; }
-@media(max-width:700px) { .two{grid-template-columns:1fr} }
-.card { padding:1.75rem; border-radius:12px; border:1px solid rgba(255,255,255,0.06); background:#14181F; }
-.card h3 { font-size:.95rem; font-weight:600; margin-bottom:.5rem; color:#FFFFFF; }
-.card p { font-size:.8rem; color:#9BA3AF; line-height:1.65; }
+/* ─── BLOB ─── */
+.blob-wrap {
+  display: flex; justify-content: center; align-items: center;
+  margin: 2rem auto 0; max-width: 680px;
+  padding: 0 1.5rem;
+}
+.blob-card {
+  background: var(--white); border-radius: 28px;
+  padding: 3rem 2rem; text-align: center;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+  width: 100%;
+}
+.blob {
+  width: 140px; height: 140px; margin: 0 auto 2rem;
+  background: linear-gradient(135deg, var(--blue-mid) 0%, rgba(52,199,123,0.12) 100%);
+  border-radius: 50%; position: relative;
+  animation: blobPulse 4s ease-in-out infinite;
+}
+@keyframes blobPulse {
+  0%, 100% { border-radius: 60% 40% 50% 70% / 50% 60% 40% 50%; transform: scale(1); }
+  33% { border-radius: 40% 60% 70% 50% / 60% 40% 50% 60%; transform: scale(1.04); }
+  66% { border-radius: 70% 50% 40% 60% / 40% 70% 60% 40%; transform: scale(0.97); }
+}
+.blob-inner {
+  position: absolute; inset: 50%;
+  transform: translate(-50%,-50%);
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(74,158,240,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.blob-card h2 {
+  font-size: 1.4rem; font-weight: 400;
+  color: var(--text); margin-bottom: 0.5rem;
+  font-family: 'DM Serif Display', serif;
+}
+.blob-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; max-width: 360px; margin: 0 auto; }
 
-/* ═══ DARK CARDS ═══ */
-.dcard { background:#14181F; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:1.75rem; transition:border-color .3s; }
-.dcard:hover { border-color:rgba(74,171,240,.15); }
-.dcard h3 { font-size:.95rem; font-weight:600; color:#FFFFFF; margin-bottom:.4rem; }
-.dcard p { font-size:.78rem; color:#9BA3AF; line-height:1.6; }
-.dtag { display:inline-block; padding:.15rem .5rem; border-radius:100px; font-size:.55rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.6rem; }
-.dtag-b { background:rgba(74,171,240,0.08); color:#4AABF0; }
-.dtag-g { background:rgba(52,199,123,0.08); color:#34C77B; }
+/* ─── SECTION WRAPPER ─── */
+.section {
+  max-width: 680px; margin: 0 auto;
+  padding: 2rem 1.5rem 0;
+}
+.section-label {
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
 
-.three { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:2.5rem; }
-@media(max-width:700px) { .three{grid-template-columns:1fr} }
+/* ─── INSIGHT CARD (like app insight bars) ─── */
+.insight-card {
+  background: var(--white); border-radius: 22px;
+  padding: 1.5rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border); margin-bottom: 1rem;
+}
+.insight-card .ic-top {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 0.75rem;
+}
+.insight-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); }
+.insight-card .ic-badge {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 0.25rem 0.65rem;
+  border-radius: 100px; flex-shrink: 0; margin-left: 0.75rem;
+}
+.badge-blue { background: var(--blue-dim); color: var(--blue); }
+.badge-green { background: var(--green-dim); color: var(--green); }
+.badge-amber { background: var(--amber-dim); color: var(--amber); }
 
-/* ═══ SCOPE NOTE ═══ */
-.note { margin-top:2rem; padding:1rem 1.25rem; background:rgba(74,171,240,0.05); border-left:3px solid #4AABF0; border-radius:0 8px 8px 0; font-size:.8rem; line-height:1.6; color:#9BA3AF; }
+.insight-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
-/* ═══ PACKAGES ═══ */
-.pkg { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin-top:2.5rem; }
-@media(max-width:900px) { .pkg{grid-template-columns:1fr} }
-.pk { background:#14181F; border-radius:14px; padding:2rem 1.75rem; border:1px solid rgba(255,255,255,0.06); transition:transform .3s; }
-.pk:hover { transform:translateY(-3px); }
-.pk h3 { font-family:‘Newsreader’,serif; font-size:1.3rem; font-weight:400; margin-bottom:.3rem; color:#FFFFFF; }
-.pk.feat { background:#0C1117; border:2px solid #4AABF0; color:#FFFFFF; }
-.pk.feat h3{color:#FFFFFF} .pk.feat .pr span{color:#4AABF0} .pk.feat .pd{color:#9BA3AF;border-color:rgba(255,255,255,0.06)} .pk.feat .pl li{color:#9BA3AF} .pk.feat .pl li::before{color:#4AABF0}
-.pbadge { display:inline-block; padding:.2rem .6rem; background:#4AABF0; color:#FFFFFF; font-size:.5rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; border-radius:100px; margin-bottom:.75rem; }
-.pr { font-size:.85rem; margin-bottom:1rem; color:#9BA3AF; }
-.pr span { font-family:‘Newsreader’,serif; font-size:1.6rem; font-weight:500; color:#4AABF0; }
-.pd { font-size:.78rem; color:#9BA3AF; line-height:1.6; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); }
-.pl { list-style:none; }
-.pl li { font-size:.78rem; color:#9BA3AF; padding:.3rem 0 .3rem 1.3rem; position:relative; line-height:1.45; }
-.pl li::before { content:‘✓’; position:absolute; left:0; color:#34C77B; font-weight:700; }
+/* ─── CHAT BUBBLES ─── */
+.chat-wrap { padding: 0.5rem 0; }
+.chat-msg { display: flex; margin-bottom: 0.85rem; animation: fadeUp 0.5s ease both; }
+.chat-msg.app { justify-content: flex-start; }
+.chat-msg.user { justify-content: flex-end; }
+.chat-bubble {
+  max-width: 78%; padding: 0.85rem 1.1rem;
+  border-radius: 20px; font-size: 0.9rem; line-height: 1.6;
+}
+.chat-msg.app .chat-bubble {
+  background: var(--white); color: var(--text);
+  border-radius: 4px 20px 20px 20px;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.chat-msg.app .chat-bubble strong { font-weight: 700; }
+.chat-msg.user .chat-bubble {
+  background: var(--blue); color: #fff;
+  border-radius: 20px 20px 4px 20px;
+}
 
-/* ═══ TIMELINE ═══ */
-.tl { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.5rem; text-align:center; }
-@media(max-width:600px) { .tl{grid-template-columns:1fr 1fr} }
-.tl-item { padding:1.5rem 1rem; }
-.tl-num { display:inline-flex; width:36px; height:36px; border-radius:50%; border:1px solid #4AABF0; color:#4AABF0; font-family:‘Newsreader’,serif; font-size:.9rem; align-items:center; justify-content:center; margin-bottom:.6rem; }
-.tl-item h4 { font-size:.8rem; margin-bottom:.3rem; color:#FFFFFF; }
-.tl-item p { font-size:.7rem; color:#9BA3AF; line-height:1.5; }
+/* ─── ALIGNMENT METER (like the energy curve) ─── */
+.align-meter {
+  background: var(--white); border-radius: 22px;
+  padding: 1.5rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border); margin-bottom: 1rem;
+}
+.align-meter h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 1.25rem; }
+.energy-bar {
+  height: 8px; border-radius: 100px;
+  background: linear-gradient(to right, #F05050, #F5A623, #34C77B, #4A9EF0);
+  margin-bottom: 0.5rem; position: relative;
+}
+.energy-bar::after {
+  content: ''; position: absolute;
+  top: 50%; right: 0; transform: translateY(-50%);
+  width: 16px; height: 16px; background: var(--blue);
+  border-radius: 50%; border: 3px solid white;
+  box-shadow: var(--shadow);
+}
+.energy-labels {
+  display: flex; justify-content: space-between;
+  font-size: 0.65rem; color: var(--muted); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
 
-/* ═══ CTA ═══ */
-.cta { background:#0C1117; text-align:center; padding:5rem 2rem; position:relative; }
-.cta h2 { font-family:‘Newsreader’,serif; font-size:clamp(1.6rem,3.5vw,2.5rem); font-weight:300; color:#FFFFFF; margin-bottom:.75rem; position:relative; z-index:1; }
-.cta h2 em { color:#4AABF0; font-style:italic; font-weight:400; }
-.cta p { color:#9BA3AF; font-size:.9rem; max-width:420px; margin:0 auto; line-height:1.7; position:relative; z-index:1; }
-.ft { background:#0C1117; border-top:1px solid rgba(255,255,255,0.06); text-align:center; padding:1.25rem; }
-.ft p { color:#9BA3AF; font-size:.6rem; letter-spacing:.1em; }
+/* ─── MEETING CARDS (misalignment style) ─── */
+.meeting-card {
+  background: var(--white); border-radius: 16px;
+  padding: 1.1rem 1.25rem; margin-bottom: 0.65rem;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.meeting-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.2rem; }
+.meeting-card .time { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
+.misalign-tag {
+  display: inline-block; padding: 0.3rem 0.75rem;
+  border-radius: 100px; font-size: 0.75rem; font-weight: 600;
+}
+.misalign-tag.amber { background: var(--amber-dim); color: var(--amber); }
+.misalign-tag.red { background: var(--red-dim); color: var(--red); }
+.misalign-tag.green { background: var(--green-dim); color: var(--green); }
+
+/* ─── PILL BUTTONS ─── */
+.btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+.btn {
+  padding: 0.75rem 1.5rem; border-radius: 100px;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; border: none; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(74,158,240,0.35); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(74,158,240,0.4); }
+.btn-ghost {
+  background: var(--white); color: var(--text);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+}
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+.btn-improve {
+  background: var(--blue-dim); color: var(--blue);
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.btn-improve svg { width: 14px; height: 14px; }
+
+/* ─── PACKAGES ─── */
+.pkg-grid { display: flex; flex-direction: column; gap: 1rem; }
+.pkg-card {
+  background: var(--white); border-radius: 22px;
+  padding: 1.75rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+.pkg-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.pkg-card.featured {
+  background: var(--text); border-color: transparent;
+}
+.pkg-card.featured .pkg-name { color: var(--white); }
+.pkg-card.featured .pkg-price { color: var(--blue); }
+.pkg-card.featured .pkg-price-unit { color: rgba(255,255,255,0.5); }
+.pkg-card.featured .pkg-desc { color: rgba(255,255,255,0.55); }
+.pkg-card.featured .pkg-item { color: rgba(255,255,255,0.7); }
+.pkg-card.featured .pkg-item::before { color: var(--green); }
+.pkg-card.featured .pkg-item-border { border-color: rgba(255,255,255,0.08); }
+
+.pkg-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.pkg-name { font-size: 1.2rem; font-weight: 600; color: var(--text); }
+.pkg-rec-badge {
+  background: var(--blue); color: #fff;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+}
+.pkg-price { font-size: 1.8rem; font-weight: 600; color: var(--blue); font-family: 'DM Serif Display', serif; }
+.pkg-price-unit { font-size: 0.8rem; color: var(--muted); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+.pkg-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; margin: 0.75rem 0 1rem; }
+.pkg-divider { height: 1px; background: var(--border); margin: 1rem 0; }
+.pkg-item-border { border-top: 1px solid var(--border); padding-top: 1rem; }
+.pkg-list { list-style: none; }
+.pkg-item {
+  font-size: 0.82rem; color: var(--muted);
+  padding: 0.3rem 0 0.3rem 1.3rem; position: relative; line-height: 1.5;
+}
+.pkg-item::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--green); font-weight: 700; font-size: 0.8rem;
+}
+
+/* ─── 4P CARDS ─── */
+.fourp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 480px) { .fourp-row { grid-template-columns: 1fr; } }
+.fp-card {
+  background: var(--white); border-radius: 18px;
+  padding: 1.25rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+.fp-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem; color: var(--blue); line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.fp-card h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+.fp-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* ─── WORKFLOW STEPS ─── */
+.wf-list { display: flex; flex-direction: column; gap: 0.65rem; }
+.wf-item {
+  background: var(--white); border-radius: 16px;
+  padding: 1.1rem 1.25rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 1rem;
+}
+.wf-num-circle {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid var(--blue);
+  color: var(--blue); font-family: 'DM Serif Display', serif;
+  font-size: 1rem; display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0;
+}
+.wf-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
+.wf-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+/* ─── SCOPE NOTE ─── */
+.scope-note {
+  background: var(--blue-dim); border-radius: 16px;
+  padding: 1.1rem 1.25rem; border-left: 3px solid var(--blue);
+  margin-top: 1rem;
+  font-size: 0.82rem; color: var(--text); line-height: 1.7;
+}
+
+/* ─── CTA ─── */
+.cta-card {
+  background: var(--text); border-radius: 28px;
+  padding: 2.5rem 2rem; text-align: center;
+  box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+}
+.cta-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(74,158,240,0.12) 0%, transparent 70%);
+}
+.cta-card h2 {
+  font-size: 1.6rem; font-weight: 300; color: #fff;
+  margin-bottom: 0.6rem;
+  font-family: 'DM Serif Display', serif;
+}
+.cta-card h2 em { font-style: italic; color: var(--blue); }
+.cta-card p { font-size: 0.88rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; line-height: 1.6; }
+.cta-steps {
+  display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+}
+.cta-step .cs-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1.5px solid var(--blue); color: var(--blue);
+  font-family: 'DM Serif Display', serif; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 0.5rem;
+}
+.cta-step h4 { color: #fff; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.15rem; }
+.cta-step p { color: rgba(255,255,255,0.45); font-size: 0.72rem; margin: 0; }
+.cta-btn {
+  background: var(--blue); color: #fff;
+  padding: 0.9rem 2.5rem; border-radius: 100px;
+  font-weight: 600; font-size: 0.95rem; display: inline-block;
+  box-shadow: 0 4px 20px rgba(74,158,240,0.4);
+  cursor: pointer; border: none; font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s ease;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(74,158,240,0.5); }
+
+/* ─── FOOTER ─── */
+.footer {
+  text-align: center; padding: 2.5rem 1.5rem;
+  font-size: 0.65rem; color: var(--light);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* ─── PILLAR PILLS ─── */
+.pillar-list { display: flex; flex-direction: column; gap: 0.65rem; }
+.pillar-item {
+  background: var(--white); border-radius: 16px;
+  padding: 1.1rem 1.25rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 1rem;
+}
+.pillar-icon {
+  width: 38px; height: 38px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
+.pillar-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+.pillar-item p { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+/* ─── BIG STAT ─── */
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1rem; }
+.stat-card {
+  background: var(--white); border-radius: 18px;
+  padding: 1.25rem 1rem; text-align: center;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem; color: var(--blue); line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat-card p { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+
+/* ─── SPACER ─── */
+.spacer { height: 1.5rem; }
+.spacer-lg { height: 2.5rem; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.card-anim { animation: fadeUp 0.6s ease both; }
+
+/* ─── INBOX ALERT ─── */
+.inbox-alert {
+  background: var(--white); border-radius: 22px;
+  padding: 1.25rem; box-shadow: var(--shadow);
+  border: 1px solid var(--border); margin-bottom: 1rem;
+}
+.inbox-alert .ia-top {
+  font-size: 0.9rem; color: var(--muted); margin-bottom: 0.85rem;
+}
+.inbox-alert .ia-top strong { color: var(--text); font-weight: 600; }
+
+/* ─── MOOD SLIDER VISUAL ─── */
+.mood-card {
+  background: var(--white); border-radius: 22px;
+  padding: 2rem 1.5rem; text-align: center;
+  box-shadow: var(--shadow); border: 1px solid var(--border);
+}
+.mood-shape {
+  width: 100px; height: 100px; margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba(74,158,240,0.15), rgba(52,199,123,0.15));
+  border-radius: 50%; animation: blobPulse 5s ease-in-out infinite;
+}
+.mood-slider-row {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;
+}
+.mood-track {
+  flex: 1; height: 6px; background: var(--bg2);
+  border-radius: 100px; position: relative;
+}
+.mood-thumb {
+  position: absolute; right: 20%; top: 50%;
+  transform: translateY(-50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--white); border: 1.5px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.mood-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+.mood-card p { font-size: 0.82rem; color: var(--muted); }
 </style>
-
 </head>
 <body>
 
-<!-- HERO -->
-
-<section class="hero">
-  <div class="hero-logos">
-    <span class="logo-t" style="color:#4AABF0">Lucie</span>
-    <span style="color:#9BA3AF;font-weight:300;font-size:.7rem">×</span>
-    <span class="logo-t" style="color:#FFFFFF">Voyager Visual</span>
-  </div>
-  <h1 class="serif">Content that builds <em>alignment</em></h1>
-  <p class="hero-sub">Founder brand building, cinematic storytelling, and a content engine to drive awareness and grow the Lucie community.</p>
-  <span class="hero-date">Proposal · March 2026</span>
-</section>
-
-<!-- CONTEXT -->
-
-<section class="sd">
-  <div class="inner">
-  <span class="lab">Context</span>
-  <h2 class="t serif">Lucie is invisible. The product is <em>ready.</em></h2>
-  <p class="p">Zero brand awareness. No founder storytelling. No consistent content. No system to measure what drives downloads. Both founders have massive untapped personal brands. The content engine doesn't exist yet. We're building it.</p>
-
-  <div class="two">
-    <div class="dcard">
-      <h3>The product</h3>
-      <p>AI alignment app connecting sleep, stress, calendar, and energy. Morning journaling, breathwork, mood tracking, meeting alignment scoring. Alpha launching with 50 founding users. Subscription at $19.99/month. Profitable at 7,000 users.</p>
-    </div>
-    <div class="dcard">
-      <h3>The opportunity</h3>
-      <p>First mover in AI alignment. Google and Microsoft are building similar but not human-first. Andy raising $5M at $25M valuation in April. Content is the engine that turns product-market fit into real traction. Without it, Lucie stays a secret.</p>
+<!-- ─── STICKY HEADER ─── -->
+<header class="app-header">
+  <div class="app-header-inner">
+    <div class="header-label">Voyager Proposal</div>
+    <div style="display:flex;align-items:center;gap:0.85rem;">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="score-badge">97</div>
     </div>
   </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero" style="animation: fadeUp 0.6s ease both;">
+  <div class="hero-eyebrow">
+    <div class="dot"></div>
+    Content Strategy Proposal · March 2026
   </div>
+  <h1>Content that builds<br><em>true alignment.</em></h1>
+  <p class="hero-sub">A strategy-led partnership to bring Lucie to the world. Cinematic storytelling, founder brand building, and a content engine designed to drive downloads and grow your community.</p>
 </section>
 
-<!-- WHAT WE OWN -->
-
-<section class="sd">
-  <div class="inner">
-    <span class="lab">Scope</span>
-    <h2 class="t serif">Who owns <em>what.</em></h2>
-    <p class="p">Clear ownership prevents misalignment. Every piece of content serves one of three purposes.</p>
-
-```
-<div class="three">
-  <div class="dcard">
-    <span class="dtag dtag-b">Voyager</span>
-    <h3>Acquisition</h3>
-    <p>The content itself. What gets attention, stops the scroll, builds awareness. Founder stories, brand reels, educational content. This is where we live. KPI: engagement, reach, page growth.</p>
-  </div>
-  <div class="dcard">
-    <span class="dtag dtag-g">Lucie Team</span>
-    <h3>Conversion</h3>
-    <p>What happens after someone engages. Landing page, app store listing, download flow, onboarding. Voyager consults on this. Lucie executes.</p>
-  </div>
-  <div class="dcard">
-    <span class="dtag dtag-g">Lucie Team</span>
-    <h3>Retention</h3>
-    <p>Keeping users on the app. First 7-day experience, feature updates, community building. Product team handles this.</p>
+<!-- ─── BLOB VISUAL ─── -->
+<div class="blob-wrap" style="animation: fadeUp 0.6s ease 0.2s both;">
+  <div class="blob-card">
+    <div class="blob"><div class="blob-inner"></div></div>
+    <h2>Good morning, Lucie.</h2>
+    <p>Your content is misaligned. No consistent voice, no founder stories, no system to measure what drives downloads. Let's change that.</p>
+    <div class="btn-row" style="justify-content:center; margin-top:1.5rem;">
+      <button class="btn btn-improve">
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 2L9.6 6.4L14 8L9.6 9.6L8 14L6.4 9.6L2 8L6.4 6.4L8 2Z" fill="currentColor"/></svg>
+        How to improve
+      </button>
+    </div>
   </div>
 </div>
 
-<div class="note" style="margin-top:2rem; background:rgba(74,171,240,0.05); border-left-color:#4AABF0;">
-  <strong style="color:#FFFFFF">The agreement:</strong> <span style="color:#9BA3AF">Voyager is measured on social media growth and engagement, not on downloads or conversions. Content compounds over time. The first three months are about establishing the brand, not driving revenue.</span>
-</div>
-```
-
+<!-- ─── STAT ROW ─── -->
+<section class="section" style="padding-top:1.5rem;">
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-num">0</div>
+      <p>Current brand awareness</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">50</div>
+      <p>Alpha founding users</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" style="color:var(--green);">∞</div>
+      <p>Growth potential</p>
+    </div>
   </div>
 </section>
 
-<!-- CONTENT PILLARS -->
+<!-- ─── UNDERSTANDING ─── -->
+<section class="section">
+  <div class="section-label">What we understand</div>
 
-<section class="sd">
-  <div class="inner">
-  <span class="lab">Content</span>
-  <h2 class="t serif">What we <em>create.</em></h2>
-
-  <div class="three" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
-    <div class="dcard">
-      <h3>Samy's story</h3>
-      <p>Harvard to alignment. The spiritual journey, the exit, the why behind Lucie. LinkedIn authority content. Weekly shoots with Oli. Three posts per week.</p>
+  <div class="chat-wrap">
+    <div class="chat-msg app card-anim">
+      <div class="chat-bubble">
+        <strong>Lucie is not a tool.</strong> It is a companion. A mirror that reflects your alignment. An AI that connects sleep, stress, calendar, and energy into one living picture. The content has to carry that same energy.
+      </div>
     </div>
-    <div class="dcard">
-      <h3>Andy's brand</h3>
-      <p>Full Instagram management. Strategy, shooting, editing, captions, posting. Building the quiet authority. Two shoot days per month with Cameron. Warm up audience before April fundraise.</p>
+    <div class="chat-msg user card-anim" style="animation-delay:0.1s;">
+      <div class="chat-bubble">But we have zero brand awareness right now.</div>
     </div>
-    <div class="dcard">
-      <h3>Lucie's page</h3>
-      <p>Brand content mixing deeply human moments with premium tech UI visuals. App walkthroughs, feature highlights, user testimonials as the community grows.</p>
-    </div>
-    <div class="dcard">
-      <h3>Alignment lessons</h3>
-      <p>Short-form education on sleep, stress, energy, AI. Samy teaching. Position Lucie as the authority in conscious tech. Value-first content that earns trust.</p>
-    </div>
-    <div class="dcard">
-      <h3>User stories</h3>
-      <p>Alpha and beta users sharing real experiences. Before and after. Authentic, unscripted. Social proof that compounds as the user base grows through community partnerships.</p>
-    </div>
-    <div class="dcard">
-      <h3>The universe</h3>
-      <p>Lifestyle content that embodies the brand. Cape Town mornings, breathwork sessions, team culture, the merch. The world around Lucie that makes people want in.</p>
+    <div class="chat-msg app card-anim" style="animation-delay:0.2s;">
+      <div class="chat-bubble">
+        That's exactly why we're here. <strong>First-mover advantage</strong> in the AI alignment space. Google and Microsoft are building similar — but they're not human-first. Lucie's warmth and spiritual intelligence make it genuinely different.
+      </div>
     </div>
   </div>
+
+  <div class="spacer"></div>
+
+  <div class="insight-card">
+    <div class="ic-top">
+      <h3>The Product</h3>
+      <span class="ic-badge badge-blue">Core</span>
+    </div>
+    <p>An alignment app that syncs with wearables and calendar. Tracks sleep, stress, meetings, and energy. Morning journaling, breathwork, mood check-ins, and meeting alignment scoring. Launching in alpha, scaling to subscription.</p>
   </div>
-</section>
 
-<!-- PACKAGES -->
-
-<section class="sd">
-  <div class="inner">
-  <span class="lab">Investment</span>
-  <h2 class="t serif">Choose your <em>level.</em></h2>
-  <p class="p">Three packages. Start with a 3-month commitment. Scale based on results.</p>
-
-  <div class="pkg">
-    <div class="pk">
-      <h3 class="serif">Foundation</h3>
-      <div class="pr"><span>$5,000</span> /month</div>
-      <p class="pd">One founder focus. Build the visual identity and start the rhythm.</p>
-      <ul class="pl">
-        <li>1 shoot day per month</li>
-        <li>8 short-form assets</li>
-        <li>1 founder (alternating)</li>
-        <li>Content strategy</li>
-        <li>Platform formatting</li>
-        <li>2 revision rounds</li>
-        <li>Monthly review</li>
-      </ul>
+  <div class="insight-card">
+    <div class="ic-top">
+      <h3>The Founders</h3>
+      <span class="ic-badge badge-green">Untapped</span>
     </div>
-    <div class="pk feat">
-      <span class="pbadge">Recommended</span>
-      <h3 class="serif">Growth</h3>
-      <div class="pr"><span>$7,500</span> /month</div>
-      <p class="pd">Both founders producing. Andy's Instagram fully managed. Content strategy owned.</p>
-      <ul class="pl">
-        <li>4 shoot days per month (Oli + Cameron)</li>
-        <li>12 short-form assets</li>
-        <li>Both founders (Samy + Andy)</li>
-        <li>Lucie brand page content</li>
-        <li>Full Instagram management (Andy)</li>
-        <li>LinkedIn strategy (both founders)</li>
-        <li>Hook and CTA variation testing</li>
-        <li>3 revision rounds</li>
-        <li>Monthly performance review</li>
-      </ul>
-    </div>
-    <div class="pk">
-      <h3 class="serif">Scale</h3>
-      <div class="pr"><span>$10,000</span> /month</div>
-      <p class="pd">Full engine. All accounts managed. Strategy, production, publishing, performance.</p>
-      <ul class="pl">
-        <li>4+ shoot days per month</li>
-        <li>16+ short-form assets</li>
-        <li>Both founders + team content</li>
-        <li>All social accounts managed</li>
-        <li>Full 4P solution</li>
-        <li>Paid ad creative (when ready)</li>
-        <li>Performance reporting</li>
-        <li>Quarterly KPI reviews</li>
-      </ul>
-    </div>
+    <p>Samy: Harvard-educated, exited his first app, deeply spiritual, incredible speaker. Andy: German investor, multi-millionaire, quiet authority, lives the product. Both founders have massive untapped personal brands waiting to be captured.</p>
   </div>
+
+  <div class="insight-card">
+    <div class="ic-top">
+      <h3>The Challenge</h3>
+      <span class="ic-badge badge-amber">33 pts misalignment</span>
+    </div>
+    <p>No consistent content. No founder storytelling. No paid strategy. No system to measure what drives downloads. The internal marketing role is being transitioned. This is a blank canvas — and a significant opportunity.</p>
   </div>
 </section>
 
-<!-- MONTHLY FLOW -->
+<!-- ─── ACR ENGINE ─── -->
+<section class="section">
+  <div class="section-label">The growth engine</div>
 
-<section class="sd">
-  <div class="inner">
-  <span class="lab">Rhythm</span>
-  <h2 class="t serif">Every month, the same <em>flow.</em></h2>
-  <div class="tl">
-    <div class="tl-item">
-      <div class="tl-num serif">1</div>
-      <h4>Align</h4>
-      <p>Strategy call. Plan this month's concepts. Review last month's data.</p>
+  <div class="align-meter">
+    <h3>Acquisition · Conversion · Retention</h3>
+    <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;">
+      Every piece of content serves one of three purposes. Understanding which is which keeps expectations aligned and results measurable.
     </div>
-    <div class="tl-item">
-      <div class="tl-num serif">2</div>
-      <h4>Shoot</h4>
-      <p>Dedicated days. Oli with Samy. Cameron with Andy. Content captured.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-num serif">3</div>
-      <h4>Deliver</h4>
-      <p>Edited, graded, formatted. Same week turnaround. Ready to post.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-num serif">4</div>
-      <h4>Review</h4>
-      <p>What worked, what didn't. Next round gets sharper. Compounds every cycle.</p>
+    <div class="energy-bar"></div>
+    <div class="energy-labels">
+      <span>Awareness</span>
+      <span>Downloads</span>
+      <span>Retention</span>
     </div>
   </div>
+
+  <div class="meeting-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <h4>Acquisition</h4>
+        <div class="time">Owned by Voyager Visual</div>
+      </div>
+      <span class="misalign-tag green">Our scope</span>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Founder stories, brand reels, educational content, sensory product demos. What stops the scroll and makes someone aware of Lucie for the first time. This is where Voyager lives.</p>
+  </div>
+
+  <div class="meeting-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <h4>Conversion</h4>
+        <div class="time">Shared scope · Consulted by Voyager</div>
+      </div>
+      <span class="misalign-tag amber">Shared</span>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">Landing page, app store, onboarding flow. What happens after someone engages. Voyager consults, Lucie executes. Not our primary KPI unless we own publishing and promotion.</p>
+  </div>
+
+  <div class="meeting-card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <h4>Retention</h4>
+        <div class="time">Owned by Lucie Team</div>
+      </div>
+      <span class="misalign-tag" style="background:var(--bg2);color:var(--muted);">Lucie scope</span>
+    </div>
+    <p style="font-size:0.82rem;color:var(--muted);line-height:1.6;">The first 7-day experience, feature updates, community building, re-engagement. Voyager can create retention assets, but the product experience is Lucie's responsibility.</p>
+  </div>
+
+  <div class="scope-note">
+    <strong>Scope clarity:</strong> If Voyager is engaged for Plan + Produce only, our KPI is whether the content communicates the brand authentically and performs when distributed. We cannot be measured on downloads if we are not managing publishing and promotion.
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ─── CONTENT PILLARS ─── -->
+<section class="section">
+  <div class="section-label">Content pillars</div>
+  <div class="insight-card" style="margin-bottom:1rem;">
+    <div class="ic-top">
+      <h3>Five angles, one voice.</h3>
+    </div>
+    <p>Every piece of content maps to one of these pillars. Together they build a complete picture of the brand: what it is, who built it, why it matters, and how it feels.</p>
+  </div>
 
-<section class="cta">
-  <h2 class="serif">Ready to bring Lucie to the <em>world?</em></h2>
-  <p>Lock the package. First shoot within two weeks. Start posting by March 27.</p>
+  <div class="pillar-list">
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(74,158,240,0.1);">🎙️</div>
+      <div>
+        <h4>Samy's Story</h4>
+        <p>Harvard to alignment. The spiritual journey, the exit, the why behind Lucie. Docu-style, intimate, cinematic. LinkedIn and Instagram authority content that builds trust at scale.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(52,199,123,0.1);">🌍</div>
+      <div>
+        <h4>Andy's World</h4>
+        <p>The quiet investor who lives the product. Behind the scenes, Munich to Cape Town, the vision for Lucie's future. Authentic, unscripted, captured in real moments.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(245,166,35,0.1);">📱</div>
+      <div>
+        <h4>Lucie in Action</h4>
+        <p>App walkthroughs, feature highlights. The morning journaling flow, the meeting alignment score, mood check-ins. Show the product without selling it.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(74,158,240,0.1);">💡</div>
+      <div>
+        <h4>Alignment Lessons</h4>
+        <p>Short-form education on sleep, stress, energy, productivity. Samy teaching AI and alignment. Position Lucie as the authority in conscious tech. Value-first content that earns trust.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(52,199,123,0.1);">🌿</div>
+      <div>
+        <h4>User Testimonials</h4>
+        <p>Real people using the app. Before and after. Alpha testers sharing their experience. Authentic, unscripted, diverse. Social proof that compounds as the user base grows.</p>
+      </div>
+    </div>
+    <div class="pillar-item">
+      <div class="pillar-icon" style="background:rgba(74,158,240,0.08);">🎬</div>
+      <div>
+        <h4>The Lucie Universe</h4>
+        <p>Lifestyle content that embodies the brand. Cape Town mornings, breathwork sessions, team culture. The world around Lucie that makes people want to be part of it.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer class="ft"><p>LUCIE × VOYAGER VISUAL · CAPE TOWN · LONDON</p></footer>
+<!-- ─── 4P FRAMEWORK ─── -->
+<section class="section">
+  <div class="section-label">How we work</div>
+
+  <div class="insight-card" style="margin-bottom:1rem;">
+    <div class="ic-top"><h3>Plan. Produce. Publish. Promote.</h3></div>
+    <p>Four phases. Each one is a separate scope. Most engagements start with Plan and Produce. Publishing and Promoting can be added when the foundation is set.</p>
+  </div>
+
+  <div class="fourp-row">
+    <div class="fp-card">
+      <div class="fp-num">01</div>
+      <h4>Plan</h4>
+      <p>Strategy, content mapping, hook frameworks, customer journey alignment. Every shoot starts here.</p>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">02</div>
+      <h4>Produce</h4>
+      <p>Cinematic production, founder content, product demos, editing, and delivery in all formats.</p>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">03</div>
+      <h4>Publish</h4>
+      <p>Content formatted for every platform. Captions, scheduling, and visual identity management.</p>
+    </div>
+    <div class="fp-card">
+      <div class="fp-num">04</div>
+      <h4>Promote</h4>
+      <p>Paid media amplification. Budget behind what works. Performance tracking and optimisation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PACKAGES ─── -->
+<section class="section">
+  <div class="section-label">Investment</div>
+
+  <div class="pkg-grid">
+    <div class="pkg-card">
+      <div class="pkg-top">
+        <span class="pkg-name">Foundation</span>
+      </div>
+      <div>
+        <span class="pkg-price">$5,000</span>
+        <span class="pkg-price-unit"> /month</span>
+      </div>
+      <p class="pkg-desc">For getting started. Build the visual identity, establish the content rhythm, and create the first library of assets.</p>
+      <div class="pkg-item-border">
+        <ul class="pkg-list">
+          <li class="pkg-item">1 shoot day per month</li>
+          <li class="pkg-item">8 short-form reels</li>
+          <li class="pkg-item">1 founder per month (alternating)</li>
+          <li class="pkg-item">Basic content strategy</li>
+          <li class="pkg-item">B-roll and asset bank</li>
+          <li class="pkg-item">Platform formatting (9:16 + 1:1)</li>
+          <li class="pkg-item">Monthly content review</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-top">
+        <span class="pkg-name">Growth</span>
+        <span class="pkg-rec-badge">Recommended</span>
+      </div>
+      <div>
+        <span class="pkg-price">$7,500</span>
+        <span class="pkg-price-unit"> /month</span>
+      </div>
+      <p class="pkg-desc">For building momentum. Both founders producing consistently, content strategy managed, and performance tracked.</p>
+      <div class="pkg-item-border" style="border-color:rgba(255,255,255,0.08);">
+        <ul class="pkg-list">
+          <li class="pkg-item">2 shoot days per month</li>
+          <li class="pkg-item">12 short-form reels</li>
+          <li class="pkg-item">Both founders (Samy + Andy)</li>
+          <li class="pkg-item">Full content strategy and planning</li>
+          <li class="pkg-item">Hook and CTA variation testing</li>
+          <li class="pkg-item">Social media publishing</li>
+          <li class="pkg-item">Monthly performance review</li>
+          <li class="pkg-item">3 revision rounds</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-top">
+        <span class="pkg-name">Scale</span>
+      </div>
+      <div>
+        <span class="pkg-price">$10,000</span>
+        <span class="pkg-price-unit"> /month</span>
+      </div>
+      <p class="pkg-desc">The full engine. Strategy, production, publishing, and promotion managed end to end.</p>
+      <div class="pkg-item-border">
+        <ul class="pkg-list">
+          <li class="pkg-item">3 shoot days per month</li>
+          <li class="pkg-item">16+ short-form reels</li>
+          <li class="pkg-item">Both founders + team culture</li>
+          <li class="pkg-item">Lucie brand page fully managed</li>
+          <li class="pkg-item">Paid ad creative and strategy</li>
+          <li class="pkg-item">LinkedIn content management</li>
+          <li class="pkg-item">Quarterly KPI reviews</li>
+          <li class="pkg-item">Dedicated creative direction</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WORKFLOW ─── -->
+<section class="section">
+  <div class="section-label">Monthly rhythm</div>
+
+  <div class="insight-card" style="margin-bottom:1rem;">
+    <div class="ic-top"><h3>How every month flows.</h3></div>
+    <p>No guesswork. No scrambling. A repeatable system that compounds into a real content asset over time.</p>
+  </div>
+
+  <div class="wf-list">
+    <div class="wf-item">
+      <div class="wf-num-circle">1</div>
+      <div>
+        <h4>Align</h4>
+        <p>Monthly strategy call. Review last month's data. Plan this month's concepts and hooks.</p>
+      </div>
+    </div>
+    <div class="wf-item">
+      <div class="wf-num-circle">2</div>
+      <div>
+        <h4>Shoot</h4>
+        <p>Dedicated production days. Founders on camera. Product demos. Lifestyle B-roll. Everything captured.</p>
+      </div>
+    </div>
+    <div class="wf-item">
+      <div class="wf-num-circle">3</div>
+      <div>
+        <h4>Edit</h4>
+        <p>Assets edited, graded, formatted. Hook variations and CTA options prepared for testing.</p>
+      </div>
+    </div>
+    <div class="wf-item">
+      <div class="wf-num-circle">4</div>
+      <div>
+        <h4>Deliver</h4>
+        <p>Content delivered or posted. Every asset formatted for the right platform. Ready to go live.</p>
+      </div>
+    </div>
+    <div class="wf-item">
+      <div class="wf-num-circle">5</div>
+      <div>
+        <h4>Review</h4>
+        <p>What worked, what didn't. Data reviewed. Next month's direction refined. Every round gets sharper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW DO YOU FEEL CARD ─── -->
+<section class="section">
+  <div class="section-label">Alignment check</div>
+  <div class="mood-card">
+    <div class="mood-shape"></div>
+    <h3>How aligned does this feel?</h3>
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;">We start within 2 weeks of locking the package.</p>
+    <div class="mood-slider-row">
+      <span style="font-size:0.7rem;color:var(--muted);">Not yet</span>
+      <div class="mood-track"><div class="mood-thumb"></div></div>
+      <span style="font-size:0.7rem;color:var(--green);font-weight:600;">Fully aligned</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="section" style="padding-bottom:2rem;">
+  <div class="section-label">Ready to begin</div>
+  <div class="cta-card">
+    <h2>Ready to bring Lucie<br>to the <em>world?</em></h2>
+    <p>Three steps to getting started. We move fast once aligned.</p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cs-num">1</div>
+        <h4>Discovery Call</h4>
+        <p>Align on goals and scope</p>
+      </div>
+      <div class="cta-step">
+        <div class="cs-num">2</div>
+        <h4>Lock the Package</h4>
+        <p>Choose the right level</p>
+      </div>
+      <div class="cta-step">
+        <div class="cs-num">3</div>
+        <h4>First Shoot</h4>
+        <p>We start within 2 weeks</p>
+      </div>
+    </div>
+    <button class="cta-btn">Book Discovery Call</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Lucie × Voyager Visual · Cape Town · London · March 2026</p>
+</footer>
 
 </body>
 </html>
